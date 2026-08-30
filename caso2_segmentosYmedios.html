@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caso 2: Asociación entre Segmento de Cliente y Medio de Pago Preferido</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            color: #1a365d;
+            border-bottom: 2px solid #2b6cb0;
+            padding-bottom: 8px;
+        }
+        h2 {
+            color: #2c5282;
+            margin-top: 25px;
+        }
+        h3 {
+            color: #2b6cb0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #cbd5e0;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f7fafc;
+            color: #2d3748;
+        }
+        pre, code {
+            background-color: #f4f6f8;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            padding: 15px;
+            overflow-x: auto;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+        .data-box {
+            max-height: 250px;
+            overflow-y: scroll;
+            border: 1px solid #e2e8f0;
+            padding: 10px;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Caso 2: Asociación entre Segmento de Cliente y Medio de Pago Preferido (Prueba Chi-Cuadrado de Independencia)</h1>
+
+    <h2>Contexto del Problema</h2>
+    <p>Una cadena de supermercados desea optimizar sus cajas de pago. El equipo de Investigación de Mercados quiere saber si la preferencia del medio de pago (Efectivo, Tarjeta de Débito/Crédito, App Móvil) depende del segmento de edad del cliente (Jóvenes: &lt; 30 años, Adultos: 30 a 50 años, Adultos Mayores: &gt; 50 años).</p>
+    <p>Se realiza una encuesta a una muestra aleatoria de 150 clientes en la que se registran ambas variables cualitativas. Se trabajará con un nivel de significancia de α = 0,05 (5%).</p>
+
+    <h2>Conjunto de Datos (N=150)</h2>
+    <p>Para analizar este caso en Jamovi, copiamos los datos de la muestra organizados en dos columnas categóricas: <code>Edad</code> y <code>MedioPago</code>.</p>
+    
+    <div class="data-box">
+        <pre>Edad	MedioPago
+Joven	App_Movil
+Joven	App_Movil
+Joven	App_Movil
+Joven	Tarjeta
+Joven	Tarjeta
+Joven	Efectivo
+Joven	App_Movil
+Joven	Tarjeta
+Joven	App_Movil
+Joven	App_Movil
+Joven	Tarjeta
+Joven	Efectivo
+Joven	App_Movil
+Joven	Tarjeta
+Joven	App_Movil
+Joven	App_Movil
+Joven	Tarjeta
+Joven	Efectivo
+Joven	App_Movil
+Joven	Tarjeta
+Joven	App_Movil
+Joven	App_Movil
+Joven	Tarjeta
+Joven	Efectivo
+Joven	App_Movil
+Joven	Tarjeta
+Joven	App_Movil
+Joven	App_Movil
+Joven	Tarjeta
+Joven	Efectivo
+Joven	App_Movil
+Joven	Tarjeta
+Joven	App_Movil
+Joven	App_Movil
+Joven	Tarjeta
+Joven	Efectivo
+Joven	App_Movil
+Joven	Tarjeta
+Joven	App_Movil
+Joven	App_Movil
+Joven	Tarjeta
+Joven	Efectivo
+Joven	App_Movil
+Joven	Tarjeta
+Joven	App_Movil
+Joven	App_Movil
+Joven	Tarjeta
+Joven	Efectivo
+Joven	App_Movil
+Joven	Tarjeta
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Efectivo
+Adulto	Efectivo
+Adulto	App_Movil
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Efectivo
+Adulto	Efectivo
+Adulto	App_Movil
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Efectivo
+Adulto	Efectivo
+Adulto	App_Movil
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Efectivo
+Adulto	Efectivo
+Adulto	App_Movil
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Efectivo
+Adulto	Efectivo
+Adulto	App_Movil
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Efectivo
+Adulto	Efectivo
+Adulto	App_Movil
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Tarjeta
+Adulto	Efectivo
+Adulto	Efectivo
+Adulto	App_Movil
+Adulto	Tarjeta
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Tarjeta
+Adulto_Mayor	Tarjeta
+Adulto_Mayor	App_Movil
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Tarjeta
+Adulto_Mayor	Tarjeta
+Adulto_Mayor	App_Movil
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Tarjeta
+Adulto_Mayor	Tarjeta
+Adulto_Mayor	App_Movil
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Tarjeta
+Adulto_Mayor	Tarjeta
+Adulto_Mayor	App_Movil
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Tarjeta
+Adulto_Mayor	Tarjeta
+Adulto_Mayor	App_Movil
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Efectivo
+Adulto_Mayor	Tarjeta
+Adulto_Mayor	Tarjeta
+Adulto_Mayor	App_Movil</pre>
+    </div>
+
+    <h2>Solución Paso a Paso</h2>
+
+    <h3>Paso 1: Formulación de Hipótesis</h3>
+    <ul>
+        <li><strong>Hipótesis Nula (H<sub>0</sub>):</strong> El medio de pago preferido es independiente de la edad del cliente (No hay relación entre las variables).</li>
+        <li><strong>Hipótesis Alternativa (H<sub>1</sub>):</strong> El medio de pago preferido depende de la edad del cliente (Existe asociación significativa entre las variables).</li>
+    </ul>
+
+    <h3>Paso 2: Construcción de la Tabla de Contingencia (Frecuencias Observadas O)</h3>
+    <table>
+        <thead>
+            <tr>
+                <th>Segmento / Medio Pago</th>
+                <th>App Móvil</th>
+                <th>Efectivo</th>
+                <th>Tarjeta</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Joven</strong></td>
+                <td>24</td>
+                <td>8</td>
+                <td>18</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td><strong>Adulto</strong></td>
+                <td>7</td>
+                <td>14</td>
+                <td>29</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td><strong>Adulto Mayor</strong></td>
+                <td>5</td>
+                <td>30</td>
+                <td>15</td>
+                <td>50</td>
+            </tr>
+            <tr>
+                <td><strong>Total</strong></td>
+                <td>36</td>
+                <td>52</td>
+                <td>62</td>
+                <td>150</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>Paso 3: Frecuencias Esperadas (E) bajo H<sub>0</sub></h3>
+    <p>La frecuencia esperada en cada celda representa los conteos teóricos si las dos variables fueran independientes:</p>
+    <p>E<sub>ij</sub> = (Total Fila<sub>i</sub> × Total Columna<sub>j</sub>) / N</p>
+    <ul>
+        <li>Para la celda (Joven, App Móvil): E = (50 × 36) / 150 = 12</li>
+        <li>Para la celda (Joven, Efectivo): E = (50 × 52) / 150 = 17,33</li>
+        <li>Para la celda (Joven, Tarjeta): E = (50 × 62) / 150 = 20,67</li>
+    </ul>
+    <p><em>(De igual forma para las demás celdas).</em></p>
+
+    <h3>Paso 4: Cálculo del Estadístico Chi-Cuadrado (χ²)</h3>
+    <p>Aplicamos la fórmula sumando sobre las 9 celdas de la tabla:</p>
+    <p>χ² = ∑ [ (O - E)² / E ]</p>
+    <p>χ² = [ (24 - 12)² / 12 ] + [ (8 - 17,33)² / 17,33 ] + ... + [ (15 - 20,67)² / 20,67 ] = <strong>38,29</strong></p>
+
+    <h3>Paso 5: Grados de Libertad, Valor Crítico y Valor p</h3>
+    <ul>
+        <li><strong>Grados de Libertad (df):</strong> (Filas - 1) × (Columnas - 1) = (3 - 1) × (3 - 1) = <strong>4</strong></li>
+        <li><strong>Valor Crítico (χ²<sub>0.05, 4</sub>):</strong> <strong>9,488</strong></li>
+        <li><strong>Valor p (p-value):</strong> Con χ² = 38,29 y df = 4, el <strong>valor p &lt; 0,001</strong>.</li>
+    </ul>
+
+    <h3>Paso 6: Conclusión e Interpretación</h3>
+    <p><strong>Decisión:</strong> Como p &lt; 0,001 &lt; 0,05 (y además χ²<sub>calc</sub> = 38,29 &gt; 9,488), se rechaza la hipótesis nula (H<sub>0</sub>).</p>
+    <p><strong>Interpretación de Mercado:</strong> Existe una asociación altamente significativa entre el segmento de edad y la preferencia del medio de pago. Los jóvenes muestran un uso marcadamente superior de la App Móvil, mientras que los adultos mayores mantienen preferencia por el efectivo y los adultos por tarjetas.</p>
+
+    <h2>Código en Python para verificación y cálculo exacto</h2>
+    <pre><code>import pandas as pd
+import numpy as np
+from scipy import stats
+
+# 1. Crear el Dataset
+edades = (['Joven'] * 50) + (['Adulto'] * 50) + (['Adulto_Mayor'] * 50)
+medios_joven = ['App_Movil']*24 + ['Efectivo']*8 + ['Tarjeta']*18
+medios_adulto = ['App_Movil']*7 + ['Efectivo']*14 + ['Tarjeta']*29
+medios_mayor = ['App_Movil']*5 + ['Efectivo']*30 + ['Tarjeta']*15
+
+medios = medios_joven + medios_adulto + medios_mayor
+
+df = pd.DataFrame({'Edad': edades, 'MedioPago': medios})
+
+# 2. Tabla de contingencia (Frecuencias Observadas)
+tabla_contingencia = pd.crosstab(df['Edad'], df['MedioPago'])
+
+# 3. Prueba Chi-Cuadrado de Independencia
+chi2_stat, p_val, dof, expected = stats.chi2_contingency(tabla_contingencia)
+
+# 4. Valor Crítico para alpha = 0.05
+alpha = 0.05
+chi2_critico = stats.chi2.ppf(1 - alpha, dof)
+
+# 5. Salida de Resultados
+print("--- TABLA DE CONTINGENCIA (OBSERVADOS) ---")
+print(tabla_contingencia)
+print("\n--- RESULTADOS PRUEBA CHI-CUADRADO ---")
+print(f"Estadístico Chi2 calculado: {chi2_stat:.4f}")
+print(f"Grados de libertad (df):    {dof}")
+print(f"Valor crítico (alpha 0.05): {chi2_critico:.4f}")
+print(f"Valor p (p-value):          {p_val:.4e}")
+
+if chi2_stat > chi2_critico:
+    print("\nDecisión: Se RECHAZA H0 (Las variables están asociadas).")
+else:
+    print("\nDecisión: NO se rechaza H0 (Las variables son independientes).")</code></pre>
+
+    <h2>Guía rápida en Jamovi</h2>
+    <ol>
+        <li>Pega los datos en dos columnas con encabezados <code>Edad</code> y <code>MedioPago</code> (asegúrate de que el tipo de variable sea Nominal / icono de 3 círculos).</li>
+        <li>Ve a la pestaña <strong>Analyses → Frequencies → Contingency Tables (Independent Samples)</strong>.</li>
+        <li>Arrastra <code>Edad</code> a <strong>Rows</strong> y <code>MedioPago</code> a <strong>Columns</strong>.</li>
+        <li>En el panel de resultados obtendrás automáticamente la tabla de contingencia, el valor del estadístico χ², los df y el valor p.</li>
+    </ol>
+
+</body>
+</html>

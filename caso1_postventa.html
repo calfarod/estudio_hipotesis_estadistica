@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Caso 1: Evaluación de Satisfacción en Servicio Posventa</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #2b2d42;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+        .container {
+            padding: 20px;
+        }
+        h1 {
+            color: #1d3557;
+            border-bottom: 3px solid #457b9d;
+            padding-bottom: 8px;
+            font-size: 20pt;
+            margin-top: 0;
+        }
+        h2 {
+            color: #1d3557;
+            font-size: 14pt;
+            margin-top: 20px;
+            border-left: 4px solid #457b9d;
+            padding-left: 10px;
+        }
+        .badge {
+            background-color: #e63946;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 9pt;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .section-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 10pt;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #1d3557;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f1f3f5;
+        }
+        .math {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-weight: bold;
+            color: #1d3557;
+        }
+        .data-grid {
+            background-color: #f1f3f5;
+            font-family: monospace;
+            padding: 10px;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            word-spacing: 5px;
+        }
+        .conclusion {
+            background-color: #e8f5e9;
+            border-left: 5px solid #2e7d32;
+            padding: 12px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="badge">Investigación de Mercados</span>
+        <h1>Caso 1: Evaluación de Satisfacción en Servicio Posventa</h1>
+        
+        <div class="section-box">
+            <h2>Contexto del Problema</h2>
+            <p>Una cadena de tiendas de tecnología ha mantenido históricamente un índice promedio de satisfacción del cliente de <strong>80 puntos</strong> (en escala 0 a 100) en su departamento de servicio técnico posventa.</p>
+            <p>Tras implementar un nuevo protocolo de atención automatizado, la dirección desea determinar si este nuevo sistema ha <strong>alterado significativamente la satisfacción del cliente</strong> (ya sea para mejorarla o empeorarla). Se evalúa una muestra de <strong>n = 30 clientes</strong> con un nivel de significancia de <span class="math">α = 0,05</span>.</p>
+        </div>
+
+        <h2>Conjunto de Datos (N = 30)</h2>
+        <p>Datos individuales de satisfacción registrados en la muestra:</p>
+        <div class="data-grid">
+            78, 82, 85, 71, 79, 83, 74, 88, 76, 80, 81, 73, 87, 72, 77, 84, 79, 75, 82, 78, 86, 70, 81, 79, 83, 77, 80, 75, 82, 76
+        </div>
+
+        <h2>Solución Paso a Paso</h2>
+        
+        <h3>Paso 1: Planteamiento de Hipótesis</h3>
+        <ul>
+            <li><strong>Hipótesis Nula (<span class="math">H<sub>0</sub></span>):</strong> <span class="math">μ = 80</span> (El protocolo no modificó la satisfacción promedio).</li>
+            <li><strong>Hipótesis Alternativa (<span class="math">H<sub>1</sub></span>):</strong> <span class="math">μ ≠ 80</span> (El protocolo alteró la satisfacción promedio).</li>
+        </ul>
+
+        <h3>Paso 2: Estadísticos Muestrales</h3>
+        <table>
+            <tr>
+                <th>Estadístico</th>
+                <th>Símbolo</th>
+                <th>Valor Muestral</th>
+            </tr>
+            <tr>
+                <td>Tamaño de Muestra</td>
+                <td><span class="math">n</span></td>
+                <td>30</td>
+            </tr>
+            <tr>
+                <td>Media Muestral</td>
+                <td><span class="math">x̄</span></td>
+                <td>79,1000</td>
+            </tr>
+            <tr>
+                <td>Desviación Estándar Muestral</td>
+                <td><span class="math">s</span></td>
+                <td>4,6930</td>
+            </tr>
+            <tr>
+                <td>Error Estándar de la Media</td>
+                <td><span class="math">SE = s / √n</span></td>
+                <td>0,8568</td>
+            </tr>
+        </table>
+
+        <h3>Paso 3: Cálculo del Estadístico de Prueba y Valor Crítico</h3>
+        <p>Fórmula aplicada para el estadístico <span class="math">t</span>:</p>
+        <div style="text-align:center; margin: 10px 0;">
+            <span class="math">t = (x̄ - μ<sub>0</sub>) / SE = (79,1000 - 80) / 0,8568 = -1,0504</span>
+        </div>
+        <table>
+            <tr>
+                <th>Métrica</th>
+                <th>Fórmula / Método</th>
+                <th>Valor</th>
+            </tr>
+            <tr>
+                <td>Grados de Libertad</td>
+                <td><span class="math">df = n - 1</span></td>
+                <td>29</td>
+            </tr>
+            <tr>
+                <td>Valor Crítico (±)</td>
+                <td><span class="math">t<sub>α/2, df</sub> (α = 0,05)</span></td>
+                <td>±2,0452</td>
+            </tr>
+            <tr>
+                <td>Valor p (p-value)</td>
+                <td><span class="math">2 × P(T > |t|)</span></td>
+                <td>0,3022</td>
+            </tr>
+        </table>
+
+        <h3>Paso 4: Decisión Estadística e Interpretación</h3>
+        <div class="conclusion">
+            <p><strong>Criterio de Decisión:</strong></p>
+            <ul>
+                <li>Por Valor p: <span class="math">p = 0,3022 > α = 0,05</span> → <strong>No se rechaza <span class="math">H<sub>0</sub></span></strong>.</li>
+                <li>Por Valor Crítico: <span class="math">|-1,0504| < 2,0452</span> → <strong>No se rechaza <span class="math">H<sub>0</sub></span></strong>.</li>
+            </ul>
+            <p><strong>Conclusión de Negocio:</strong> Con un 95% de confianza, no existe evidencia estadística suficiente para afirmar que el nuevo protocolo de atención haya modificado la satisfacción de los clientes. La variación observada es atribuible a la variabilidad muestral.</p>
+        </div>
+    </div>
+</body>
+</html>
+Profesor
+Carlos Alfaro DÍaz
+Todos los derechos reservados © 2026
