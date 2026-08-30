@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caso 4: Comparación de Adopción de Pagos Digitales entre Segmentos</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #2b2d42;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 20px;
+            background-color: #ffffff;
+        }
+        .container {
+            padding: 10px;
+        }
+        h1 {
+            color: #1d3557;
+            border-bottom: 3px solid #457b9d;
+            padding-bottom: 8px;
+            font-size: 20pt;
+            margin-top: 0;
+        }
+        h2 {
+            color: #1d3557;
+            font-size: 14pt;
+            margin-top: 25px;
+            border-left: 4px solid #457b9d;
+            padding-left: 10px;
+        }
+        h3 {
+            color: #457b9d;
+            font-size: 12pt;
+        }
+        .badge {
+            background-color: #2a9d8f;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 9pt;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .section-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 10pt;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #1d3557;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f1f3f5;
+        }
+        .math {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-weight: bold;
+            color: #1d3557;
+        }
+        pre, code {
+            background-color: #f4f6f8;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            padding: 15px;
+            overflow-x: auto;
+            font-size: 9.5pt;
+        }
+        .conclusion {
+            background-color: #e8f5e9;
+            border-left: 5px solid #2e7d32;
+            padding: 12px;
+            margin-top: 15px;
+        }
+        .data-box {
+            max-height: 220px;
+            overflow-y: scroll;
+            border: 1px solid #e2e8f0;
+            padding: 10px;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="badge">Investigación de Mercados / 2 Muestras Independientes</span>
+        <h1>Caso 4: Comparación de Adopción de Autopago entre Segmentos de Usuarios (Prueba Z de 2 Proporciones)</h1>
+        
+        <div class="section-box">
+            <h2>Contexto del Problema</h2>
+            <p>Para acelerar el flujo de caja y eliminar fricciones operativas en la plataforma de movilidad (<em>Uber del futuro</em>), el equipo de producto planea implementar la función <strong>"Autopago Silencioso"</strong> (cobro automático al finalizar la ruta sin requerir confirmación manual en pantalla).</p>
+            <p>Se desea determinar si los usuarios del segmento <strong>Corporativo / Ejecutivo (Muestra 1)</strong> presentan una tasa de adopción significativamente mayor que los usuarios del segmento <strong>Estándar / Particular (Muestra 2)</strong>. Se realiza un piloto con <span class="math">n₁ = 150</span> y <span class="math">n₂ = 150</span> usuarios respectivamente, evaluado con un nivel de significancia de <span class="math">α = 0,05</span>.</p>
+        </div>
+
+        <h2>Conjunto de Datos (N = 300) para Jamovi y Python</h2>
+        <p>Formato plano listo para copiar e importar como archivo CSV o pegar directamente en Jamovi:</p>
+        <div class="data-box">
+            <pre>Segmento,Adopto_Autopago
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,1
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Corporativo,0
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,1
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0
+Estandar,0</pre>
+        </div>
+
+        <h2>Solución Paso a Paso</h2>
+        
+        <h3>Paso 1: Planteamiento de Hipótesis</h3>
+        <ul>
+            <li><strong>Hipótesis Nula (<span class="math">H<sub>0</sub></span>):</strong> <span class="math">p₁ ≤ p₂</span> (La tasa de adopción en Corporativos es menor o igual que en Estándar).</li>
+            <li><strong>Hipótesis Alternativa (<span class="math">H<sub>1</sub></span>):</strong> <span class="math">p₁ > p₂</span> (La tasa de adopción en Corporativos es significativamente superior a la del segmento Estándar).</li>
+        </ul>
+
+        <h3>Paso 2: Estadísticos Muestrales</h3>
+        <table>
+            <tr>
+                <th>Grupo / Segmento</th>
+                <th>Muestra (<span class="math">n</span>)</th>
+                <th>Éxitos (<span class="math">x</span>)</th>
+                <th>Proporción Muestral (<span class="math">p̄</span>)</th>
+            </tr>
+            <tr>
+                <td>Muestra 1: Corporativo</td>
+                <td>150</td>
+                <td>96</td>
+                <td>0,6400 (64,0%)</td>
+            </tr>
+            <tr>
+                <td>Muestra 2: Estándar</td>
+                <td>150</td>
+                <td>69</td>
+                <td>0,4600 (46,0%)</td>
+            </tr>
+            <tr>
+                <td><strong>Diferencia Observada</strong></td>
+                <td>-</td>
+                <td>-</td>
+                <td><strong>+0,1800 (+18,0%)</strong></td>
+            </tr>
+        </table>
+
+        <h3>Paso 3: Cálculo del Estadístico de Prueba Z</h3>
+        <table>
+            <tr>
+                <th>Métrica</th>
+                <th>Valor / Estadístico</th>
+            </tr>
+            <tr>
+                <td>Proporción Ponderada Combinada (<span class="math">p̄<sub>c</sub></span>)</td>
+                <td>(96 + 69) / (150 + 150) = 165 / 300 = <strong>0,5500</strong></td>
+            </tr>
+            <tr>
+                <td>Error Estándar de Diferencia (<span class="math">SE</span>)</td>
+                <td>√[ 0,55 × (1 - 0,55) × (1/150 + 1/150) ] = <strong>0,0576</strong></td>
+            </tr>
+            <tr>
+                <td>Estadístico Z Calculado (<span class="math">Z<sub>calc</sub></span>)</td>
+                <td>(0,6400 - 0,4600) / 0,0576 = <strong>3,1248</strong></td>
+            </tr>
+            <tr>
+                <td>Valor Crítico (<span class="math">Z<sub>α</sub></span> para α = 0,05)</td>
+                <td><strong>1,6449</strong></td>
+            </tr>
+            <tr>
+                <td>Valor p (<span class="math">p-value</span>)</td>
+                <td>P(Z > 3,1248) = <strong>0,0009</strong></td>
+            </tr>
+        </table>
+
+        <h3>Paso 4: Decisión Estadística e Interpretación</h3>
+        <div class="conclusion">
+            <p><strong>Criterio de Decisión:</strong></p>
+            <ul>
+                <li>Por Valor p: <span class="math">p = 0,0009 < α = 0,05</span> → <strong>Se rechaza <span class="math">H<sub>0</sub></span></strong>.</li>
+                <li>Por Valor Crítico: <span class="math">Z<sub>calculado</sub> (3,1248) > Z<sub>crítico</sub> (1,6449)</span> → <strong>Se rechaza <span class="math">H<sub>0</sub></span></strong>.</li>
+            </ul>
+            <p><strong>Conclusión e Impacto Comercial:</strong> Existe evidencia estadística altamente significativa (p < 0,001) de que el segmento Corporativo adopta el Autopago a una tasa muy superior (+18% de brecha). En la arquitectura de la app, activaremos el Autopago de forma predeterminada para cuentas Corporativas y aplicaremos campañas de incentivo (cashback) en el segmento Estándar.</p>
+        </div>
+
+        <h2>Código en Python (`caso4_2proporciones.py`)</h2>
+        <pre><code>import numpy as np
+from scipy import stats
+from statsmodels.stats.proportion import proportions_ztest
+
+# 1. Datos resumidos del experimento
+exitos = np.array([96, 69])   # [Corporativo, Estandar]
+muestras = np.array([150, 150])
+
+p1_hat = exitos[0] / muestras[0]  # 64.0%
+p2_hat = exitos[1] / muestras[1]  # 46.0%
+alpha = 0.05
+
+# 2. Ejecutar la Prueba Z para 2 Proporciones Independientes (Una cola: 'larger')
+z_stat, p_value = proportions_ztest(count=exitos, nobs=muestras, alternative='larger')
+z_critico = stats.norm.ppf(1 - alpha)
+
+# 3. Salida de Resultados
+print("--- PRUEBA Z PARA 2 PROPORCIONES INDEPENDIENTES ---")
+print(f"Proporción Corporativo (p1_hat): {p1_hat:.2%}")
+print(f"Proporción Estándar    (p2_hat): {p2_hat:.2%}")
+print(f"Diferencia Muestral:             {(p1_hat - p2_hat):.2%}")
+print(f"Estadístico Z calculado:        {z_stat:.4f}")
+print(f"Valor Crítico Z (alpha={alpha}):   {z_critico:.4f}")
+print(f"Valor p (p-value):              {p_value:.4f}")
+
+print("\n--- DECISIÓN DE PRODUCTO / ARQUITECTURA ---")
+if p_value < alpha:
+    print("✅ RECHAZAR H0: Los usuarios Corporativos adoptan la función a mayor tasa.")
+else:
+    print("❌ NO RECHAZAR H0: No se observa diferencia significativa entre segmentos.")</code></pre>
+
+        <h2>Guía de Ejecución en Jamovi</h2>
+        <ol>
+            <li>Copia el bloque plano de 300 datos CSV de la sección superior y pégalo en una hoja limpia de Jamovi.</li>
+            <li>Define la columna <code>Segmento</code> como variable <strong>Nominal</strong> (Valores: <code>Corporativo</code>, <code>Estandar</code>).</li>
+            <li>Define la columna <code>Adopto_Autopago</code> como variable <strong>Nominal</strong> (Valores: <code>1</code>, <code>0</code>).</li>
+            <li>Dirígete a la pestaña <strong>Analyses → Frequencies → Contingency Tables (Independent Samples - X²)</strong>.</li>
+            <li>Mueve <code>Segmento</code> al casillero <strong>Rows</strong> (Filas) y <code>Adopto_Autopago</code> a <strong>Columns</strong> (Columnas).</li>
+            <li>En las opciones de la izquierda, bajo <strong>Cells</strong>, marca la casilla <strong>Row percentages</strong> para observar las proporciones del 64% vs 46%.</li>
+            <li>Bajo <strong>Statistics</strong>, verifica la prueba de <strong>Chi-Square (X²)</strong> o activa <strong>Difference in proportions</strong> para obtener el resultado exacto.</li>
+        </ol>
+    </div>
+</body>
+</html>
