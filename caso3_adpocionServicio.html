@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caso 3: Validación de Adopción de un Nuevo Servicio de Movilidad</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            color: #2b2d42;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 20px;
+            background-color: #ffffff;
+        }
+        .container {
+            padding: 10px;
+        }
+        h1 {
+            color: #1d3557;
+            border-bottom: 3px solid #457b9d;
+            padding-bottom: 8px;
+            font-size: 20pt;
+            margin-top: 0;
+        }
+        h2 {
+            color: #1d3557;
+            font-size: 14pt;
+            margin-top: 25px;
+            border-left: 4px solid #457b9d;
+            padding-left: 10px;
+        }
+        h3 {
+            color: #457b9d;
+            font-size: 12pt;
+        }
+        .badge {
+            background-color: #2a9d8f;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 9pt;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        .section-box {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 10pt;
+        }
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #1d3557;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f1f3f5;
+        }
+        .math {
+            font-family: 'Times New Roman', serif;
+            font-style: italic;
+            font-weight: bold;
+            color: #1d3557;
+        }
+        pre, code {
+            background-color: #f4f6f8;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            padding: 15px;
+            overflow-x: auto;
+            font-size: 9.5pt;
+        }
+        .conclusion {
+            background-color: #e8f5e9;
+            border-left: 5px solid #2e7d32;
+            padding: 12px;
+            margin-top: 15px;
+        }
+        .data-box {
+            max-height: 200px;
+            overflow-y: scroll;
+            border: 1px solid #e2e8f0;
+            padding: 10px;
+            background-color: #fafafa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <span class="badge">Validación de Producto / Prueba Z</span>
+        <h1>Caso 3: Validación de Adopción de un Nuevo Servicio de Movilidad (Prueba Z para 1 Proporción)</h1>
+        
+        <div class="section-box">
+            <h2>Contexto del Problema</h2>
+            <p>Una plataforma de transporte urbano (<em>Uber del futuro</em>) planea lanzar a nivel nacional la función <strong>"Viaje Silencioso & Climatizado"</strong>, diseñada para resolver la fatiga social de los pasajeros en viajes de trabajo.</p>
+            <p>Para justificar la inversión en desarrollo e infraestructura, la gerencia exige que al menos el <strong>30% (p₀ = 0,30)</strong> de los usuarios adopte la función durante la prueba piloto. Se evalúa una muestra de <strong>n = 200 usuarios</strong> en una ciudad piloto con un nivel de significancia de <span class="math">α = 0,05</span>.</p>
+        </div>
+
+        <h2>Conjunto de Datos (N = 200)</h2>
+        <p>Registro individual de adopción de la función (1 = Adoptó el servicio, 0 = No adoptó):</p>
+        <div class="data-box">
+            <pre>1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1,
+1, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0,
+0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1,
+0, 0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 1, 0, 1, 0, 0, 1, 1, 1, 0, 0, 1, 0, 1, 1, 0,
+0, 1, 1, 0, 0, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1</pre>
+        </div>
+        <p><strong>Resumen del piloto:</strong> 72 éxitos (Adoptaron el servicio) y 128 fracasos.</p>
+
+        <h2>Solución Paso a Paso</h2>
+        
+        <h3>Paso 1: Planteamiento de Hipótesis</h3>
+        <ul>
+            <li><strong>Hipótesis Nula (<span class="math">H<sub>0</sub></span>):</strong> <span class="math">p ≤ 0,31</span> (La tasa de adopción es igual o inferior al 31%; el piloto no alcanza la meta).</li>
+            <li><strong>Hipótesis Alternativa (<span class="math">H<sub>a</sub></span>):</strong> <span class="math">p > 0,31</span> (La tasa de adopción es superior al 31%; el piloto es un éxito comercial).</li>
+        </ul>
+
+        <h3>Paso 2: Estadísticos Muestrales</h3>
+        <table>
+            <tr>
+                <th>Estadístico</th>
+                <th>Símbolo</th>
+                <th>Valor Muestral</th>
+            </tr>
+            <tr>
+                <td>Tamaño de Muestra</td>
+                <td><span class="math">n</span></td>
+                <td>200</td>
+            </tr>
+            <tr>
+                <td>Casos de Éxito Observados</td>
+                <td><span class="math">x</span></td>
+                <td>72</td>
+            </tr>
+            <tr>
+                <td>Proporción Muestral</td>
+                <td><span class="math">p̄ (p-hat)</span></td>
+                <td>0,3600 (36,1%)</td>
+            </tr>
+            <tr>
+                <td>Proporción Hipotética (Meta)</td>
+                <td><span class="math">p<sub>1</sub></span></td>
+                <td>0,3000 (30,0%)</td>
+            </tr>
+            <tr>
+                <td>Error Estándar de la Proporción</td>
+                <td><span class="math">SE = √[p₀(1-p₀)/n]</span></td>
+                <td>0,0324</td>
+            </tr>
+        </table>
+
+        <h3>Paso 3: Cálculo del Estadístico de Prueba Z</h3>
+        <p>Fórmula aplicada para el estadístico <span class="math">Z</span>:</p>
+        <div style="text-align:center; margin: 15px 0;">
+            <span class="math">Z = (p̄ - p<sub>0</sub>) / SE = (0,3600 - 0,3000) / 0,0324 = 1,8519</span>
+        </div>
+        <table>
+            <tr>
+                <th>Métrica</th>
+                <th>Fórmula / Método</th>
+                <th>Valor</th>
+            </tr>
+            <tr>
+                <td>Valor Crítico (Una Cola)</td>
+                <td><span class="math">Z<sub>α</sub> (α = 0,05)</span></td>
+                <td>1,6449</td>
+            </tr>
+            <tr>
+                <td>Valor p (p-value)</td>
+                <td><span class="math">P(Z > 1,8519)</span></td>
+                <td>0,0320</td>
+            </tr>
+        </table>
+
+        <h3>Paso 4: Decisión Estadística e Interpretación</h3>
+        <div class="conclusion">
+            <p><strong>Criterio de Decisión:</strong></p>
+            <ul>
+                <li>Por Valor p: <span class="math">p = 0,0320 < α = 0,05</span> → <strong>Se rechaza <span class="math">H<sub>0</sub></span></strong>.</li>
+                <li>Por Valor Crítico: <span class="math">Z<sub>calculado</sub> (1,8516) > Z<sub>crítico</sub> (1,6449)</span> → <strong>Se rechaza <span class="math">H<sub>0</sub></span></strong>.</li>
+            </ul>
+            <p><strong>Conclusión de Negocio:</strong> Con un 95% de confianza, existe evidencia estadística suficiente para afirmar que la tasa de adopción del servicio "Viaje Silencioso" superó la meta del 30%, alcanzando un 36%. Se aprueba el despliegue a escala nacional.</p>
+        </div>
+
+        <h2>Código en Python para verificación y cálculo exacto</h2>
+        <pre><code>import numpy as np
+import pandas as pd
+from statsmodels.stats.proportion import proportions_ztest
+from scipy import stats
+
+# 1. Configuración de datos del experimento
+exitos = 72       # Usuarios que activaron la función
+nobs = 200        # Muestra total evaluada
+p_0 = 0.30        # Meta mínima de adopción (30%)
+alpha = 0.05      # Nivel de significancia
+
+# 2. Ejecutar la Prueba Z para 1 Proporción (Una cola hacia la derecha: 'larger')
+z_stat, p_val = proportions_ztest(count=exitos, nobs=nobs, value=p_0, alternative='larger')
+
+# 3. Valor crítico de Z para alpha = 0.05
+z_critico = stats.norm.ppf(1 - alpha)
+
+# 4. Salida de Resultados
+print("--- PRUEBA Z PARA UNA PROPORCIÓN (ADOPCIÓN DE PRODUCTO) ---")
+print(f"Proporción observada (p-hat): {exitos/nobs:.4f} ({exitos/nobs:.1%})")
+print(f"Estadístico Z calculado:     {z_stat:.4f}")
+print(f"Valor Crítico (Z_alpha):     {z_critico:.4f}")
+print(f"Valor p (p-value):           {p_val:.4f}")
+
+print("\n--- DECISIÓN DE PRODUCTO / COMERCIAL ---")
+if p_val < alpha:
+    print("Resultado: SE RECHAZA H0.")
+    print("Conclusión: La adopción superó la meta requerida. Desplegar en producción.")
+else:
+    print("Resultado: NO SE RECHAZA H0.")
+    print("Conclusión: La adopción no alcanza la meta. Ajustar estrategia o interfaz.")</code></pre>
+
+        <h2>Guía rápida en Jamovi</h2>
+        <ol>
+            <li>Inserta la columna <code>Adopto_Servicio</code> con valores <code>1</code> (Sí) y <code>0</code> (No) definidos como variable Nominal.</li>
+            <li>Ve a la pestaña <strong>Analyses → Frequencies → One Sample Proportion Test (2 Outcomes)</strong>.</li>
+            <li>Arrastra <code>Adopto_Servicio</code> al campo <strong>Variables</strong>.</li>
+            <li>En <strong>Test value</strong> escribe <code>0.30</code> y selecciona la hipótesis alternativa de una cola (<code>> Test value</code>).</li>
+            <li>Jamovi generará automáticamente el conteo, la proporción observada, el valor <span class="math">Z</span> y el <span class="math">p-value</span>.</li>
+        </ol>
+    </div>
+</body>
+</html>
