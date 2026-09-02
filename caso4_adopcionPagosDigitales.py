@@ -10,6 +10,16 @@ muestras = np.array([150, 150])
 p1_hat = exitos[0] / muestras[0]  # 64.0%
 p2_hat = exitos[1] / muestras[1]  # 46.0%
 
+# Error Estándar de la Diferencia de Proporciones
+
+p_com = sum(exitos) / sum(muestras)
+
+e_st = np.sqrt(p_com * (1- p_com) * (1/muestras[0] + 1/muestras[1]))
+
+z_cal = (p1_hat - p2_hat) / e_st
+
+print(f"❤️ z_cal   : {z_cal}\n")
+
 alpha = 0.05
 
 # 2. Prueba Z para 2 Proporciones (Una cola: 'larger' -> p1 > p2)
@@ -33,6 +43,9 @@ print("❄️ --- RESULTADOS PRUEBA Z PARA 2 PROPORCIONES INDEPENDIENTES ---")
 print(f"Proporción Corporativo (p1_hat): {p1_hat:.2%}")
 print(f"Proporción Estándar    (p2_hat): {p2_hat:.2%}")
 print(f"Diferencia observada           : {(p1_hat - p2_hat):.2%}")
+print(f"Error Estándar           (e_st): {e_st:.4f}")
+print(f" ❤️  z_cal                    : {z_cal:.6f}")
+print(f" ❤️  xi-cuadrado              : {z_cal ** 2:.6f}")
 print(f"Estadístico Z-calculado:       : {z_stat:.4f}")
 print(f"Valor Z-Crítico (alpha={alpha}): {z_critico:.4f}")
 print(f"Valor-p (p-value)              : {p_value:.4f}")
