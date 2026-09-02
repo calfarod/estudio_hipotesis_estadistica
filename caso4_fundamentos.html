@@ -127,7 +127,7 @@
 
         <h3>C. Construcción del Estadístico Z</h3>
         <p>El estadístico de prueba mide a cuántas desviaciones estándar se encuentra la diferencia observada (<span class="math">p̄₁ - p̄₂ = 0,18</span>) con respecto a la diferencia nula esperada (<span class="math">0</span>):</p>
-        <p style="text-align: center;"><span class="math">Z<sub>calc</sub> = ( (p̄₁ - p̄₂) - 0 ) / SE = 0,1800 / 0,0576 = 3,1248</span></p>
+        <p style="text-align: center;"><span class="math">Z<sub>calc</sub> = ( (p̄₁ - p̄₂) - 0 ) / SE = 0,1800 / 0,0574456 = 3,1334</span></p>
 
         <h2>3. Equivalencia Estructural: Prueba Z vs. Chi-Cuadrado (χ²)</h2>
         <p>En análisis de investigación de mercados (como los reportados por Jamovi o SPSS), la comparación de dos proporciones en muestras independientes también se presenta como una <strong>Tabla de Contingencia de 2x2</strong> utilizando la prueba de Chi-cuadrado (<span class="math">χ²</span>):</p>
@@ -135,7 +135,7 @@
         <div class="concept-card">
             <div class="concept-title">Relación Matemática Directa</div>
             <p>Para tablas de 2x2, la prueba Z de 2 proporciones y la prueba de Chi-cuadrado de Pearson son matemáticamente equivalentes:</p>
-            <p style="text-align: center;"><span class="math">χ² = (Z<sub>calc</sub>)²</span> &nbsp;&nbsp; → &nbsp;&nbsp; <span class="math">(3,1248)² = 9,764</span></p>
+            <p style="text-align: center;"><span class="math">χ² = (Z<sub>calc</sub>)²</span> &nbsp;&nbsp; → &nbsp;&nbsp; <span class="math">(3,1334)² = 9,8181</span></p>
             <p>Ambas metodologías arrojan exactamente el mismo <strong>valor p (p-value = 0,0009)</strong>, garantizando que el resultado en Python y en Jamovi sea exactamente coincidente.</p>
         </div>
 
@@ -143,7 +143,7 @@
         <div class="highlight-box">
             <p><strong>Validación Cuantitativa de Mercado:</strong></p>
             <ul>
-                <li><strong>Interpretación del resultado (<span class="math">Z = 3,1248, p < 0,001</span>):</strong> La brecha del +18% a favor del segmento Corporativo no es producto del azar o del ruido muestral. El segmento Corporativo valora la velocidad transaccional significativamente más que el usuario común.</li>
+                <li><strong>Interpretación del resultado (<span class="math">Z = 3,1334, p < 0,001</span>):</strong> La brecha del +18% a favor del segmento Corporativo no es producto del azar o del ruido muestral. El segmento Corporativo valora la velocidad transaccional significativamente más que el usuario común.</li>
                 <li><strong>Decisión de Arquitectura en la App:</strong> Evita implementar la función como un botón genérico igual para todos. Configura reglas de negocio diferenciadas: activación automática por defecto para cuentas <em>Business</em> y flujo opcional con incentivos de gamificación para usuarios particulares.</li>
             </ul>
         </div>
