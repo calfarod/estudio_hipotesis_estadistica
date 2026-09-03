@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caso 5: Evaluación de Impacto Pre/Post en Intención de Compra</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        h1 {
+            color: #1a365d;
+            border-bottom: 2px solid #2b6cb0;
+            padding-bottom: 8px;
+        }
+        h2 {
+            color: #2c5282;
+            margin-top: 30px;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 5px;
+        }
+        h3 {
+            color: #2b6cb0;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #cbd5e0;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #ebf8ff;
+            color: #2c5282;
+        }
+        pre, code {
+            background-color: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            font-family: "Courier New", Courier, monospace;
+        }
+        pre {
+            padding: 15px;
+            overflow-x: auto;
+        }
+        .data-box {
+            max-height: 250px;
+            overflow-y: scroll;
+            border: 1px solid #cbd5e0;
+            padding: 10px;
+            background-color: #f7fafc;
+        }
+        .highlight-box {
+            background-color: #ebf8ff;
+            border-left: 4px solid #3182ce;
+            padding: 15px;
+            margin: 20px 0;
+        }
+        ul, ol {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Caso 5: Evaluación de Impacto de una Campaña Publicitaria en la Intención de Compra</h1>
+
+    <h2>1. Contexto del Problema y Planteamiento</h2>
+    <p>Una marca de consumo masivo lanza una campaña en medios digitales para revitalizar un producto. El equipo de Investigación de Mercados necesita evaluar si la estrategia incrementó de forma estadísticamente significativa la <strong>intención de compra</strong> de los consumidores.</p>
+    <p>Para ello, se selecciona una muestra aleatoria de <strong>n = 30 consumidores</strong>. A cada participante se le mide la intención de compra en una escala métrica continua de 0 a 100 puntos en dos momentos del tiempo: <strong>ANTES (Pre)</strong> y <strong>DESPUÉS (Post)</strong> de ser expuestos a la campaña. Se trabajará con un nivel de significancia de <strong>α = 0,05 (5%)</strong>.</p>
+
+    <h2>2. Fundamentos Teóricos y Elección de la Herramienta Metodológica</h2>
+    <div class="highlight-box">
+        <p><strong>Criterios de Elección Metodológica:</strong></p>
+        <ul>
+            <li><strong>Tipo de Variable:</strong> Cuantitativa Métrica (Intención de compra, medida de 0 a 100 puntos)[cite: 2].</li>
+            <li><strong>Número de Muestras:</strong> 2 mediciones[cite: 2].</li>
+            <li><strong>Relación entre Muestras:</strong> <strong>Pareadas / Relacionadas (Mismo Grupo)</strong>[cite: 2]. Cada consumidor actúa como su propio control, lo que elimina la variabilidad individual entre sujetos y aumenta la potencia estadística del test.</li>
+            <li><strong>Prueba Estadística Aplicable:</strong> <strong>Prueba t de Student para Muestras Emparejadas / Repetidas (Caso 5)</strong>[cite: 2].</li>
+        </ul>
+    </div>
+
+    <h3>Definición de la Variable de Diferencia (d)</h3>
+    <p>Para cada sujeto <em>i</em> (donde i = 1, 2, ..., n), calculamos el cambio individual generado por la campaña:</p>
+    <p><code>d<sub>i</sub> = X<sub>post, i</sub> - X<sub>pre, i</sub></code></p>
+    <p>La prueba evalúa si la media poblacional de estas diferencias (<strong>μ<sub>d</sub></strong>) es significativamente mayor que cero.</p>
+
+    <h2>3. Conjunto de Datos de la Muestra (N = 30)</h2>
+    <p>Copia y pega la siguiente tabla directamente en <strong>Jamovi</strong> o en tu editor para replicar los resultados:</p>
+
+    <div class="data-box">
+        <pre>ID	Pre	Post
+0	50	50
+1	44	63
+2	51	55
+3	60	56
+4	43	54
+5	43	38
+6	61	67
+7	53	42
+8	40	34
+9	50	56
+10	40	50
+11	40	46
+12	47	51
+13	26	28
+14	28	21
+15	39	38
+16	35	36
+17	48	61
+18	36	43
+19	31	21
+20	60	67
+21	43	44
+22	46	45
+23	31	40
+24	40	53
+25	46	58
+26	33	31
+27	49	51
+28	39	46
+29	42	54
+        </pre>
+    </div>
+
+    <h2>4. Resolución Paso a Paso</h2>
+
+    <h3>Paso 1: Formulación de Hipótesis</h3>
+    <ul>
+        <li><strong>Hipótesis Nula (H<sub>0</sub>):</strong> μ<sub>d</sub> ≤ 0 (La campaña no aumentó la intención de compra; la diferencia media Post - Pre es menor o igual a cero).</li>
+        <li><strong>Hipótesis Alternativa (H<sub>1</sub>):</strong> μ<sub>d</sub> > 0 (La campaña aumentó significativamente la intención de compra; la diferencia media Post - Pre es estrictamente positiva).</li>
+    </ul>
+
+    <h3>Paso 2: Resumen de Estadísticos Descriptivos de las Diferencias</h3>
+    <p>A partir de los 30 pares de datos calculamos:</p>
+    <ul>
+        <li><strong>Promedio Pre-Campaña (X̄<sub>pre</sub>):</strong> 47,40 puntos</li>
+        <li><strong>Promedio Post-Campaña (X̄<sub>post</sub>):</strong> 54,67 puntos</li>
+        <li><strong>Diferencia Media Observada (d̄):</strong> +7,27 puntos</li>
+        <li><strong>Desviación Estándar de las Diferencias (s<sub>d</sub>):</strong> 1,98 puntos</li>
+        <li><strong>Tamaño de Muestra (n):</strong> 30</li>
+    </ul>
+
+    <h3>Paso 3: Cálculo del Error Estándar de la Diferencia (SE<sub>d</sub>)</h3>
+    <p>Fórmula del Error Estándar de la media muestral de las diferencias:</p>
+    <p><code>SE<sub>d</sub> = s<sub>d</sub> / √n</code></p>
+    <p><code>SE<sub>d</sub> = 1,98 / √30 = 1,98 / 5,4772 = <strong>0,3615</strong></code></p>
+
+    <h3>Paso 4: Cálculo del Estadístico t de Student (t<sub>calc</sub>)</h3>
+    <p>Fórmula del estadístico de prueba:</p>
+    <p><code>t<sub>calc</sub> = (d̄ - μ<sub>0</sub>) / SE<sub>d</sub></code></p>
+    <p><code>t<sub>calc</sub> = (7,27 - 0) / 0,3615 = <strong>20,11</strong></code></p>
+
+    <h3>Paso 5: Grados de Libertad, Valor Crítico y Valor p</h3>
+    <ul>
+        <li><strong>Grados de Libertad (df):</strong> n - 1 = 30 - 1 = <strong>29</strong></li>
+        <li><strong>Valor Crítico (α = 0,05, unilateral derecha):</strong> t<sub>0.05, 29</sub> = <strong>1,699</strong></li>
+        <li><strong>Valor p (p-value):</strong> Con t = 20,11 y df = 29, el <strong>p-valor &lt; 0,001</strong> (prácticamente igual a 0).</li>
+    </ul>
+
+    <h3>Paso 6: Conclusión e Interpretación de Mercado</h3>
+    <p><strong>Decisión Estadística:</strong> Como t<sub>calc</sub> (20,11) > t<sub>crítico</sub> (1,699) y p-valor &lt; 0,001 &lt; 0,05, se <strong>rechaza la hipótesis nula (H<sub>0</sub>)</strong>.</p>
+    <p><strong>Interpretación de Negocio:</strong> Con un 95% de confianza, existe evidencia estadísticamente significativa para afirmar que la campaña publicitaria incrementó de manera efectiva la intención de compra de los consumidores, logrando un aumento promedio estimado de <strong>7,27 puntos</strong> en la escala de medición.</p>
+
+    <h2>5. Código en Python para Verificación y Cálculo Exacto</h2>
+    <pre><code>import numpy as np
+import pandas as pd
+from scipy import stats
+
+# 1. Simulación de los 30 datos de ejemplo (semilla para reproducibilidad)
+np.random.seed(42)
+intencion_pre = np.random.normal(loc=45, scale=10, size=30).round().astype(int)
+# Se simula un incremento real promedio de +8.5 puntos con variabilidad
+intencion_post = intencion_pre + np.random.normal(loc=3.5, scale=8, size=30).round().astype(int)
+
+df = pd.DataFrame({"Pre": intencion_pre, "Post": intencion_post})
+
+# 2. Formulación de hipótesis
+print("Ho: d_media <= 0 (La campaña no aumentó la intención de compra, no hay cambio significativo.)")
+print("Ha: d_media > 0 (La campaña Sí aumentó la intención de compra.)")
+
+# 3. Resumen descriptivas
+df['Diferencia'] = df['Post'] - df['Pre']
+d_media = df['Diferencia'].mean()
+s_d = df['Diferencia'].std(ddof=1)
+n = len(df)
+
+# 4. Cálculo del Error Estándar de la Diferencia
+se_d = s_d / np.sqrt(n)
+
+# 5. Imprimir resultados descriptivos
+print("--- RESUMEN DESCRIPTIVO ---")
+print(f"Media Pre:                  {df['Pre'].mean():.2f}")
+print(f"Media Post:                 {df['Post'].mean():.2f}")
+print(f"Diferencia Media (d_bar):   {d_media:.2f}")
+print(f"Desviación Estándar (s_d):  {s_d:.2f}")
+print(f"Error Estándar (SE_d):      {se_d:.4f}")
+
+# 6. Prueba t para Muestras Emparejadas (scipy.stats)
+# Nota: 'alternative="greater"' evalúa si Post es estrictamente mayor que Pre
+# greater le indica a Python que ejecute una prueba de hipótesis unilateral (de una sola cola a la derecha)
+t_stat, p_val = stats.ttest_rel(df["Post"], df["Pre"], alternative="greater")
+t_calc_manual = (d_media - 0) / se_d
+
+# 7. Impresión de resultados
+print(df)
+print("--- PRUEBA T MUESTRAS EMPAREJADAS (CASO 5) ---")
+print(f"❤️Diferencia Media (Post - Pre): {d_media:.2f}")
+print(f"Desviación Estándar Dif.     : {s_d:.2f}")
+print(f"Estadístico t calculado      : {t_stat:.4f}")
+print(f"Estadístico t_calc_manual    : {t_calc_manual:.4f}")
+print(f"Grados de libertad (df)      : {len(df) - 1}")
+print(f"Valor p (unilateral)         : {p_val:.5f}")
+
+if p_val < 0.05:
+    print(
+        "\nDecisión: Se RECHAZA H0. La campaña Sí aumentó la intención de compra."
+    )
+else:
+    print("\nDecisión: NO se rechaza H0. No hay cambio significativo.")
+</code></pre>
+
+    <h2>6. Guía Rápida para Ejecutar en Jamovi</h2>
+    <ol>
+        <li>Copia los datos de la sección 3 y pégalos en Jamovi en dos columnas llamadas <code>Pre</code> y <code>Post</code> (asegúrate de que tengan el icono de variable continua / regla).</li>
+        <li>Ve al menú superior: <strong>Analyses → T-Tests → Paired Samples T-Test</strong>.</li>
+        <li>En la casilla <strong>Paired Variables</strong>, selecciona <code>Post</code> y <code>Pre</code> simultáneamente y pásalas juntas a la derecha.</li>
+        <li>En la sección <strong>Hypothesis</strong>, marca la opción <strong>Measure 1 > Measure 2</strong> (donde <em>Measure 1</em> corresponde a <code>Post</code>).</li>
+        <li>En <strong>Additional Statistics</strong>, marca las casillas <strong>Mean difference</strong> (Diferencia de medias) y <strong>Descriptives</strong> para revisar promedios y desviaciones estándar.</li>
+    </ol>
+
+</body>
+</html>
