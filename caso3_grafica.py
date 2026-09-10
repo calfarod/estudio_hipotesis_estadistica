@@ -59,7 +59,7 @@ ax.legend(loc='upper left', fontsize=8, frameon=True, facecolor='#ffffff', edgec
 ax.grid(axis='x', linestyle=':', alpha=0.5)
 
 # Guardar en ALTA RESOLUCIÓN para producción/reportes (sin afectar la pantalla)
-plt.savefig("grafico_caso3_export.png", dpi=300, bbox_inches='tight')
+plt.savefig("caso3_grafico_export.png", dpi=300, bbox_inches='tight')
 
 # Mostrar en pantalla ajustado
 plt.show()
